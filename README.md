@@ -1,1 +1,1 @@
-# Lumber_Tycoon_2
+# Lumber Tycoon 2 Wiki
