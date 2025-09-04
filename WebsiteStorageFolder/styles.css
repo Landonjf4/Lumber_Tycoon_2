@@ -37,7 +37,7 @@ body, html {
   background-color: rgba(70, 130, 180, 0.9); /* light blue */
   width: calc(100% - 40px);
   margin: 20px auto;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
