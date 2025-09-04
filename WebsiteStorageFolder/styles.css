@@ -22,17 +22,19 @@ body, html {
   background-color: rgba(0, 0, 128, 0.8);
   width: 95%;
   max-width: 1200px;
-  padding: 0; /* padding handled by overlay-top */
-  border-radius: 10px;
+  padding: 20px;           /* adds space inside */
+  border-radius: 15px;     /* UI corners */
   box-sizing: border-box;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
   color: white;
+  margin: 0 auto;          /* center horizontally */
   position: relative;
-  align-items: center; /* center overlay-top horizontally */
 }
 
-/* Light blue overlay inside dark blue */
+/* Light blue top overlay */
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
   width: 100%;
@@ -41,8 +43,8 @@ body, html {
   display: flex;
   flex-direction: column;
   color: inherit;
-  border-radius: 10px 10px 0 0;
-  align-items: center;
+  border-radius: 0;
+  margin: 0 10px;
 }
 
 
