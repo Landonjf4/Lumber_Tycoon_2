@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   const resultsContainer = document.getElementById("resultsContainer");
 
-  // Example search data
+// Array
   const pages = [
-    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html" },
-    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html" },
-    { name: "Main Wiki", url: "index.html" }
+    { name: "Axe Discovery", url: "https://landonjf4.github.io/Lumber_Tycoon_2/AxeFolder/AxeDiscovery.html" },
+    { name: "Basic Hatchet", url: "https://landonjf4.github.io/Lumber_Tycoon_2/AxeFolder/Axes/BasicHatchet.html" },
+    { name: "Main Wiki", url: "https://landonjf4.github.io/Lumber_Tycoon_2/" }
   ];
 
   // Show results while typing
