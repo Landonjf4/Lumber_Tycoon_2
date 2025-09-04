@@ -17,33 +17,27 @@ body, html {
   padding-top: 60px; 
 }
 
-/* Dark blue overlay */
 .overlay {
-  background-color: rgba(0, 0, 128, 0.8);
+  background-color: rgba(24, 44, 68, 0.8);
   width: 95%;
-  max-width: 1200px;
+  max-width: 9999px;
   margin: 0 auto;
+  padding: 20px;
+  color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  color: white;
+
+  display: block;
 }
 
-/* Light blue overlay (top section) */
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
   width: 100%;
-  border-radius: 0;
   padding: 20px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  color: inherit;
+  display: block;
 }
+
 
 /* Text alignment helpers */
 .text-left { text-align: left; }
