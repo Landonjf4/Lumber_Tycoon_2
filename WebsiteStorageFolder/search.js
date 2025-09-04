@@ -5,17 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!searchBar) return;
 
   const pages = [
-    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" }, // no image
+    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" },
     { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon.png" },
-    { name: "Main Wiki", url: "#", img: "" } // no image
+    { name: "Main Wiki", url: "#", img: "" }
   ];
 
-  // Add blur when search active
+  // Blur behind everything except overlay
   searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
   });
 
-  // Show results while typing
   searchBar.addEventListener("input", () => {
     const query = searchBar.value.toLowerCase().trim();
     resultsContainer.innerHTML = "";
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsContainer.style.display = "flex";
   });
 
-  // Click outside to close
+  // Click outside: hide results & remove blur
   document.addEventListener("click", (event) => {
     if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
       resultsContainer.style.display = "none";
