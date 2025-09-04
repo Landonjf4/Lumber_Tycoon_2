@@ -1,4 +1,4 @@
-/* General reset */
+/* General reset + fonts */
 body, html {
   margin: 0;
   padding: 0;
@@ -8,14 +8,12 @@ body, html {
 
 /* Background layer */
 .background {
-  background: url("https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/MapImage.png") 
-              center center / cover no-repeat;
+  background: url("https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/MapImage.png") center center / cover no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 60px;   /* gap above overlay */
-  position: relative;
+  padding-top: 30px;
 }
 
 /* Dark blue overlay */
@@ -24,14 +22,17 @@ body, html {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  height: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
 }
 
-/* Light blue top overlay (only on home page) */
+/* Light blue overlay (top section) */
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
   width: 100%;
@@ -47,6 +48,16 @@ body, html {
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+
+/* Input base style */
+.overlay input {
+  border-radius: 10px;
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
 
 /* Buttons */
 .overlay button {
@@ -74,35 +85,7 @@ body, html {
   transform: scale(0.98);
 }
 
-/* Go Back button */
-.go-back {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 8px;
-  background-color: #e74c3c;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-.go-back:hover {
-  background-color: #c0392b;
-  transform: scale(1.05);
-}
-
-.go-back:active {
-  transform: scale(0.95);
-}
-
-/* Search bar */
+/* Animated search bar */
 .overlay input[type="text"] {
   width: 100%;
   max-width: 300px;
@@ -111,7 +94,6 @@ body, html {
   border-radius: 20px;
   font-size: 16px;
   box-sizing: border-box;
-  margin-bottom: 15px;
   transition: max-width 1.6s ease,
               border-color 0.3s ease,
               box-shadow 0.3s ease,
@@ -133,54 +115,33 @@ body, html {
   background-color: #ffffff;
 }
 
-/* Search results container */
+/* Search results dropdown */
 #resultsContainer {
-  width: 100%;
-  max-width: 400px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-  border-radius: 6px;
-  overflow: hidden;
-  display: none; /* hidden until typing */
-  z-index: 20;
   position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-width: 300px;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  margin-top: 5px;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 100;
 }
 
-/* Search Box */
-.resultBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
+#resultsContainer div {
+  padding: 10px;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  color: black;
 }
 
-.resultBox:last-child {
-  border-bottom: none;
+#resultsContainer div:hover {
+  background: #f1f1f1;
 }
 
-.resultBox:hover {
-  background-color: #f0f0f0;
-}
-
-.resultBox a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  flex: 1;
-}
-
-/* Result image */
-.sideImage {
-  width: 50px;
-  height: 50px;
-  margin-left: 10px;
-  border: 1px solid #333;
-}
-
-/* Mobile */
+/* Responsive */
 @media (max-width: 600px) {
   .overlay {
     width: 95%;
