@@ -1,33 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const openSearchBtn = document.getElementById("openSearch");
-  const searchModal = document.getElementById("searchModal");
   const searchBar = document.getElementById("searchBar");
   const resultsContainer = document.getElementById("resultsContainer");
 
-  // Pages array with optional images
   const pages = [
-    { 
-      name: "Axe Discovery", 
-      url: "https://landonjf4.github.io/Lumber_Tycoon_2/AxeFolder/AxeDiscovery.html",
-      img: ""
-    },
-    { 
-      name: "Basic Hatchet", 
-      url: "https://landonjf4.github.io/Lumber_Tycoon_2/AxeFolder/Axes/BasicHatchet.html",
-      img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon.png"
-    },
-    { 
-      name: "Main Wiki", 
-      url: "https://landonjf4.github.io/Lumber_Tycoon_2/",
-      img: ""
-    }
+    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "ImagesFolder/AxeDiscovery.png" },
+    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "ImagesFolder/BasicHatchet.png" },
+    { name: "Main Wiki", url: "#", img: "" } // no image
   ];
 
-  // Open the search modal
-  openSearchBtn.addEventListener("click", () => {
-    searchModal.style.display = "flex";
+  // Focus event: add blur to background
+  searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
-    searchBar.focus();
   });
 
   // Show results while typing
@@ -35,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const query = searchBar.value.toLowerCase().trim();
     resultsContainer.innerHTML = "";
 
-    if (query === "") return;
+    if (!query) {
+      resultsContainer.style.display = "none";
+      return;
+    }
 
     const matches = pages.filter(page => page.name.toLowerCase().includes(query));
 
@@ -44,11 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.classList.add("result-item");
 
-        // Add image only if it exists
+        // Only add image if it exists
         if (match.img) {
           const img = document.createElement("img");
           img.src = match.img;
-          img.style.border = "1px solid black"; // border only if image exists
           div.appendChild(img);
         }
 
@@ -68,14 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
       div.textContent = "No results found";
       resultsContainer.appendChild(div);
     }
+
+    resultsContainer.style.display = "flex";
   });
 
-  // Close modal if clicking outside
+  // Click outside: hide results and remove blur
   document.addEventListener("click", (event) => {
-    if (!searchModal.contains(event.target) && event.target !== openSearchBtn) {
-      searchModal.style.display = "none";
+    if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
+      resultsContainer.style.display = "none";
       resultsContainer.innerHTML = "";
-      searchBar.value = "";
       document.body.classList.remove("search-active");
     }
   });
