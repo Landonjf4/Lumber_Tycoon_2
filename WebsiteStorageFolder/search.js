@@ -2,16 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   const resultsContainer = document.getElementById("resultsContainer");
 
-  // Only run if search bar exists
   if (!searchBar) return;
 
   const pages = [
-    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" },
+    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" }, // no image
     { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon.png" },
-    { name: "Main Wiki", url: "#", img: "" }
+    { name: "Main Wiki", url: "#", img: "" } // no image
   ];
 
-  // Focus event: add blur
+  // Add blur when search active
   searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
   });
@@ -28,31 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const matches = pages.filter(page => page.name.toLowerCase().includes(query));
 
-    if (matches.length > 0) {
-      matches.forEach(match => {
-        const div = document.createElement("div");
-        div.classList.add("result-item");
+    matches.forEach(match => {
+      const div = document.createElement("div");
+      div.classList.add("result-item");
 
-        // Text on left
-        const span = document.createElement("span");
-        span.textContent = match.name;
-        div.appendChild(span);
+      // Text left
+      const span = document.createElement("span");
+      span.textContent = match.name;
+      div.appendChild(span);
 
-        // Optional image on right
-        if (match.img) {
-          const img = document.createElement("img");
-          img.src = match.img;
-          div.appendChild(img);
-        }
+      // Image right if exists
+      if (match.img) {
+        const img = document.createElement("img");
+        img.src = match.img;
+        div.appendChild(img);
+      }
 
-        // Click navigation
-        div.addEventListener("click", () => {
-          window.location.href = match.url;
-        });
-
-        resultsContainer.appendChild(div);
+      div.addEventListener("click", () => {
+        window.location.href = match.url;
       });
-    } else {
+
+      resultsContainer.appendChild(div);
+    });
+
+    if (matches.length === 0) {
       const div = document.createElement("div");
       div.classList.add("result-item");
       div.textContent = "No results found";
@@ -62,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsContainer.style.display = "flex";
   });
 
-  // Click outside: hide results & remove blur
+  // Click outside to close
   document.addEventListener("click", (event) => {
     if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
       resultsContainer.style.display = "none";
