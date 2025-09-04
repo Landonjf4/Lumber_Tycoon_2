@@ -33,18 +33,17 @@ body, html {
   margin: 0 auto;
 }
 
-/* Light blue top overlay */
 .overlay-top {
-  background-color: rgba(70, 130, 180, 0.9);
-  width: 90%;
+  background-color: rgba(70, 130, 180, 0.9); /* light blue */
+  width: calc(100% - 40px);
+  margin: 20px auto;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   color: inherit;
-  margin: 0 auto;
-  border-radius: 0;
 }
+
 
 
 .go-back {
