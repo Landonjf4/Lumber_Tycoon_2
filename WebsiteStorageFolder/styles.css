@@ -6,7 +6,7 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
-/* Background layer */
+/* Background */
 .background {
   position: relative;
   background: url("https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/MapImage.png") center center / cover no-repeat;
@@ -18,17 +18,27 @@ body, html {
   z-index: 0;
 }
 
+/* Blur behind overlay */
+body.search-active .background::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  z-index: 0;
+}
+
 /* Overlay */
 .overlay {
   background-color: rgb(24, 44, 68);
   width: 95%;
   max-width: 1200px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px; 
+  border-radius: 10px; 
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
   color: white;
   position: relative;
@@ -38,40 +48,33 @@ body, html {
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
   width: 100%;
-  padding: 10px 15px;
+  padding: 15px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  color: inherit;
-  border-radius: 0;
   align-items: center;
+  border-radius: 0;
 }
 
-/* Search input */
-.overlay input[type="text"] {
+/* Search input full width */
+#searchBar {
   width: 100%;
-  max-width: 300px;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: 2px solid black;
   border-radius: 20px;
   font-size: 16px;
   box-sizing: border-box;
-  transition: max-width 1.6s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease,
-              background-color 0.3s ease;
+  transition: max-width 1.6s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.overlay input[type="text"]:hover {
-  max-width: 3000px;
+#searchBar:hover {
   border-color: #d3d3d3;
   box-shadow: 0px 0px 12px rgba(76, 175, 80, 0.6);
   background-color: #f9fff9;
 }
 
-.overlay input[type="text"]:focus {
+#searchBar:focus {
   outline: none;
-  max-width: 9999px;
   border-color: #013220;
   box-shadow: 0px 0px 12px rgba(1, 50, 32, 0.6);
   background-color: #ffffff;
@@ -82,18 +85,18 @@ body, html {
   position: absolute;
   display: none;
   flex-direction: column;
-  margin-top: 5px;
   width: 100%;
-  max-width: 400px;
-  z-index: 2; /* above overlay content */
+  max-width: 100%;
+  margin-top: 8px;
+  z-index: 2;
 }
 
-/* Individual result */
+/* Result item */
 .result-item {
   display: flex;
   justify-content: space-between; /* text left, image right */
   align-items: center;
-  padding: 6px 10px;
+  padding: 8px 12px;
   background: white;
   border-radius: 6px;
   cursor: pointer;
@@ -111,22 +114,37 @@ body, html {
   color: black;
 }
 
-/* Result image */
+/* Result image on right */
 .result-item img {
   width: 50px;
   height: 50px;
-  object-fit: cover; /* crops to fill 50x50 */
+  object-fit: cover;
   border-radius: 4px;
   border: 1px solid black;
 }
 
-/* Blur behind overlay when search active */
-body.search-active .background::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  z-index: 0; /* behind overlay */
+/* Green button style */
+.overlay-button {
+  width: auto;
+  max-width: 200px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.overlay-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.overlay-button:active {
+  transform: scale(0.98);
 }
