@@ -2,13 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   const resultsContainer = document.getElementById("resultsContainer");
 
+  // Only run if search bar exists
+  if (!searchBar) return;
+
   const pages = [
-    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "ImagesFolder/AxeDiscovery.png" },
-    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "ImagesFolder/BasicHatchet.png" },
-    { name: "Main Wiki", url: "#", img: "" } // no image
+    { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" },
+    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon.png" },
+    { name: "Main Wiki", url: "#", img: "" }
   ];
 
-  // Focus event: add blur to background
+  // Focus event: add blur
   searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
   });
@@ -30,17 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.classList.add("result-item");
 
-        // Only add image if it exists
+        // Text on left
+        const span = document.createElement("span");
+        span.textContent = match.name;
+        div.appendChild(span);
+
+        // Optional image on right
         if (match.img) {
           const img = document.createElement("img");
           img.src = match.img;
           div.appendChild(img);
         }
 
-        const span = document.createElement("span");
-        span.textContent = match.name;
-        div.appendChild(span);
-
+        // Click navigation
         div.addEventListener("click", () => {
           window.location.href = match.url;
         });
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsContainer.style.display = "flex";
   });
 
-  // Click outside: hide results and remove blur
+  // Click outside: hide results & remove blur
   document.addEventListener("click", (event) => {
     if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
       resultsContainer.style.display = "none";
