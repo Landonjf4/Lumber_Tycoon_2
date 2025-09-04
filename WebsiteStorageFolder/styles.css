@@ -1,0 +1,192 @@
+/* General reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Background layer */
+.background {
+  background: url("https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/MapImage.png") 
+              center center / cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;   /* gap above overlay */
+  position: relative;
+}
+
+/* Dark blue overlay */
+.overlay {
+  background-color: rgba(0, 0, 128, 0.8);
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: auto;
+}
+
+/* Light blue top overlay (only on home page) */
+.overlay-top {
+  background-color: rgba(70, 130, 180, 0.9);
+  width: 100%;
+  border-radius: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+/* Text alignment helpers */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Buttons */
+.overlay button {
+  width: 100%;
+  max-width: 200px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.overlay button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 10px rgba(0,0,0,0.4);
+}
+
+.overlay button:active {
+  transform: scale(0.98);
+}
+
+/* Go Back button */
+.go-back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.go-back:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.go-back:active {
+  transform: scale(0.95);
+}
+
+/* Search bar */
+.overlay input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  transition: max-width 1.6s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              background-color 0.3s ease;
+}
+
+.overlay input[type="text"]:hover {
+  max-width: 3000px;
+  border-color: #d3d3d3;
+  box-shadow: 0px 0px 12px rgba(76, 175, 80, 0.6);
+  background-color: #f9fff9;
+}
+
+.overlay input[type="text"]:focus {
+  outline: none;
+  max-width: 9999px;
+  border-color: #013220;
+  box-shadow: 0px 0px 12px rgba(1, 50, 32, 0.6);
+  background-color: #ffffff;
+}
+
+/* Search results container */
+#resultsContainer {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: none; /* hidden until typing */
+  z-index: 20;
+  position: absolute;
+}
+
+/* Search Box */
+.resultBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.resultBox:last-child {
+  border-bottom: none;
+}
+
+.resultBox:hover {
+  background-color: #f0f0f0;
+}
+
+.resultBox a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  flex: 1;
+}
+
+/* Result image */
+.sideImage {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border: 1px solid #333;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .overlay {
+    width: 95%;
+    padding: 15px;
+  }
+  h1 { font-size: 1.5em; }
+  p { font-size: 1em; }
+  .overlay button { max-width: 100%; }
+}
