@@ -24,18 +24,35 @@
       padding-top: 30px;
     }
 
-    /* Overlay box */
-    .overlay {
-      background-color: rgba(0, 0, 128, 0.8); /* semi-transparent blue */
-      width: 95%;
-      max-width: 9999px;
-      margin: 0px auto;
-      padding: 20px;
-      color: white;
-      border-radius: 10px;
-      box-sizing: border-box;
-      height: auto;
+/* Dark blue overlay (middle layer) */
+.overlay {
+  background-color: rgba(0, 0, 128, 0.8);
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
 }
+
+/* Light blue top overlay */
+.overlay-top {
+  background-color: rgba(70, 130, 180, 0.9);
+  width: 100%;
+  border-radius: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+
 
     .text-left { text-align: left; }
     .text-center { text-align: center; }
@@ -117,12 +134,13 @@
 </head>
 <body>
 
-  <div class="background">
-    <div class="overlay">
+<div class="background">
+  <div class="overlay"> <!-- Dark blue middle layer -->
+    <div class="overlay-top"> <!-- Light blue top layer -->
       <div class="text-center">
-      	<div class = "input">
-        	<input type="text" placeholder="Search...">
-		</div>
+        <div class="input">
+          <input type="text" placeholder="Search...">
+        </div>
         <h1>Lumber Tycoon 2 Wiki</h1>
         <p>This website is an unofficial website designed to help users navigate Lumber Tycoon 2 information.</p>
 
@@ -132,6 +150,9 @@
       </div>
     </div>
   </div>
+</div>
+
+
 
 </body>
 </html>
