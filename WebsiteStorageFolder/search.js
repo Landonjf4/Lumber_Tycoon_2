@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Main Wiki", url: "#", img: "" }
   ];
 
-  // Blur behind everything except overlay
+
+  
   searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
   });
@@ -23,19 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsContainer.style.display = "none";
       return;
     }
-
+    
     const matches = pages.filter(page => page.name.toLowerCase().includes(query));
-
     matches.forEach(match => {
       const div = document.createElement("div");
       div.classList.add("result-item");
-
-      // Text left
       const span = document.createElement("span");
       span.textContent = match.name;
       div.appendChild(span);
-
-      // Image right if exists
       if (match.img) {
         const img = document.createElement("img");
         img.src = match.img;
@@ -45,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       div.addEventListener("click", () => {
         window.location.href = match.url;
       });
-
       resultsContainer.appendChild(div);
     });
 
@@ -58,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resultsContainer.style.display = "flex";
   });
-
-  // Click outside: hide results & remove blur
   document.addEventListener("click", (event) => {
     if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
       resultsContainer.style.display = "none";
