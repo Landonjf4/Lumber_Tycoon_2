@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const pages = [
     { name: "Axe Discovery", url: "AxeFolder/AxeDiscovery.html", img: "" },
-    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon.png" },
+    { name: "Basic Hatchet", url: "AxeFolder/Axes/BasicHatchet.html", img: "https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/AxeImagesFolder/BasicHatchetFolder/BasicHatchetIcon2.png" },
     { name: "Main Wiki", url: "#", img: "" }
   ];
 
