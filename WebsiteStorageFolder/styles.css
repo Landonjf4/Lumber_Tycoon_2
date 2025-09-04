@@ -19,6 +19,22 @@ body, html {
   z-index: 0;
 }
 
+/* Blur layer element */
+.blur-layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  z-index: 1; /* behind overlay/results */
+  display: none; /* hidden until search is active */
+}
+
+/* Show blur when active */
+body.search-active .blur-layer {
+  display: block;
+}
+
 /* Overlay */
 .overlay {
   background-color: rgb(24, 44, 68);
@@ -90,7 +106,7 @@ body, html {
 /* Each result same height */
 .result-item {
   display: flex;
-  justify-content: space-between; /* text left, image right */
+  justify-content: center;  /* centered by default */
   align-items: center;
   padding: 10px 12px;
   min-height: 60px; /* consistent height */
@@ -99,6 +115,7 @@ body, html {
   cursor: pointer;
   transition: background 0.2s ease;
   gap: 10px;
+  text-align: center; /* ensures text looks centered */
 }
 
 .result-item:hover {
@@ -113,6 +130,7 @@ body, html {
 
 /* Result image on right */
 .result-item img {
+  margin-left: auto; /* pushes image to right */
   width: 50px;
   height: 50px;
   object-fit: cover;
@@ -144,16 +162,4 @@ body, html {
 
 .overlay-button:active {
   transform: scale(0.98);
-}
-
-/* Full-page blur behind overlay & search */
-body.search-active::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  z-index: 1; /* behind overlay/results */
-  pointer-events: none;
 }
