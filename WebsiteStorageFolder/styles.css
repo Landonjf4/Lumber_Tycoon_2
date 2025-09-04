@@ -19,7 +19,7 @@ body, html {
 
 /* Dark blue overlay */
 .overlay {
-  background-color: rgba(0, 0, 128, 0.8);
+  background-color: rgba(24, 44, 68, 0.8);
   width: 95%;
   max-width: 1200px;
   padding: 20px;           /* adds space inside */
