@@ -8,34 +8,62 @@ body, html {
 
 /* Background layer */
 .background {
-  position: relative; /* keep this */
+  position: relative;
   background: url("https://raw.githubusercontent.com/Landonjf4/Lumber_Tycoon_2/refs/heads/main/ImagesFolder/MapImage.png") center center / cover no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 60px; 
+  padding-top: 30px;
 }
 
 .overlay {
-  background-color: rgba(24, 44, 68, 0.8);
+  background-color: rgba(0, 0, 128, 0.8);
   width: 95%;
-  max-width: 9999px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
+  max-width: 1200px;
+  padding: 10px;
   border-radius: 10px;
   box-sizing: border-box;
-
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
 }
 
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
   width: 100%;
   padding: 20px;
-  box-sizing: border-box;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+.go-back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.go-back:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.go-back:active {
+  transform: scale(0.95);
 }
 
 
