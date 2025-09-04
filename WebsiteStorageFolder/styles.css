@@ -19,32 +19,31 @@ body, html {
 
 /* Dark blue overlay */
 .overlay {
-  background-color: rgba(24, 44, 68, 0.8);
+  background-color: rgb(24, 44, 68);
   width: 95%;
   max-width: 1200px;
-  padding: 20px;           /* adds space inside */
-  border-radius: 15px;     /* UI corners */
+  padding: 10px;
+  border-radius: 10px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
   color: white;
-  margin: 0 auto;          /* center horizontally */
   position: relative;
+  margin: 0 auto;
 }
 
 /* Light blue top overlay */
 .overlay-top {
   background-color: rgba(70, 130, 180, 0.9);
-  width: 100%;
+  width: calc(100% - 40px);
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   color: inherit;
+  margin: 0 auto;
   border-radius: 0;
-  margin: 0 10px;
 }
 
 
