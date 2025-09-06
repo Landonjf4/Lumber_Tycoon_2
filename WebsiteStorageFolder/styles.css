@@ -19,22 +19,6 @@ body, html {
   z-index: 0;
 }
 
-/* Blur layer element */
-.blur-layer {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  z-index: 1; /* behind overlay/results */
-  display: none; /* hidden until search is active */
-}
-
-/* Show blur when active */
-body.search-active .blur-layer {
-  display: block;
-}
-
 /* Overlay */
 .overlay {
   background-color: rgb(24, 44, 68);
@@ -48,7 +32,7 @@ body.search-active .blur-layer {
   flex-direction: column;
   color: white;
   position: relative;
-  z-index: 2; /* above blur */
+  z-index: 2;
 }
 
 .overlay-top {
@@ -62,7 +46,7 @@ body.search-active .blur-layer {
   border-radius: 0;
 }
 
-/* Search wrapper (keeps results under bar) */
+/* Search wrapper */
 .search-wrapper {
   position: relative;
   width: 100%;
@@ -73,7 +57,7 @@ body.search-active .blur-layer {
 /* Search input with expand animation */
 #searchBar {
   width: 100%;
-  max-width: 500px; /* default width */
+  max-width: 500px;
   padding: 12px 20px;
   border: 2px solid black;
   border-radius: 20px;
@@ -85,7 +69,7 @@ body.search-active .blur-layer {
 
 #searchBar:hover,
 #searchBar:focus {
-  max-width: 95%; /* expand to overlay size */
+  max-width: 95%;
   border-color: #013220;
   box-shadow: 0px 0px 12px rgba(1, 50, 32, 0.6);
   background-color: #ffffff;
@@ -94,43 +78,44 @@ body.search-active .blur-layer {
 /* Results container */
 #resultsContainer {
   position: absolute;
-  top: calc(100% + 8px); /* directly under search bar */
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   display: none;
   flex-direction: column;
-  width: 500px; /* fixed width regardless of bar expansion */
-  z-index: 3; /* above blur */
+  width: 500px;
+  z-index: 3;
 }
 
-/* Each result same height */
+/* Each result */
 .result-item {
   display: flex;
-  justify-content: center;  /* centered by default */
+  justify-content: space-between; 
   align-items: center;
   padding: 10px 12px;
-  min-height: 60px; /* consistent height */
+  min-height: 60px;
   background: white;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease;
   gap: 10px;
-  text-align: center; /* ensures text looks centered */
 }
 
+/* Hover effect */
 .result-item:hover {
   background: #f0f0f0;
 }
 
-/* Result text */
-.result-item span {
+/* Text always centered */
+.result-text {
+  flex: 1;
+  text-align: center;
   font-weight: bold;
   color: black;
 }
 
-/* Result image on right */
+/* Image on right */
 .result-item img {
-  margin-left: auto; /* pushes image to right */
   width: 50px;
   height: 50px;
   object-fit: cover;
