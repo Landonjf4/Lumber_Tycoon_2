@@ -10,8 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Main Wiki", url: "#", img: "" }
   ];
 
+  // Clear search results when navigating back
+  window.addEventListener("pageshow", () => {
+    resultsContainer.style.display = "none";
+    resultsContainer.innerHTML = "";
+    searchBar.value = "";
+  });
 
-  
   searchBar.addEventListener("focus", () => {
     document.body.classList.add("search-active");
   });
@@ -24,14 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsContainer.style.display = "none";
       return;
     }
-    
-    const matches = pages.filter(page => page.name.toLowerCase().includes(query));
+
+    const matches = pages.filter(page => page.name.toLowerCase().startsWith(query));
+
+    if (matches.length === 0) {
+      resultsContainer.style.display = "none";
+      return;
+    }
+
     matches.forEach(match => {
       const div = document.createElement("div");
       div.classList.add("result-item");
-      const span = document.createElement("span");
-      span.textContent = match.name;
-      div.appendChild(span);
+
+      const textWrapper = document.createElement("div");
+      textWrapper.classList.add("result-text");
+      textWrapper.textContent = match.name;
+
+      div.appendChild(textWrapper);
+
       if (match.img) {
         const img = document.createElement("img");
         img.src = match.img;
@@ -41,18 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
       div.addEventListener("click", () => {
         window.location.href = match.url;
       });
+
       resultsContainer.appendChild(div);
     });
 
-    if (matches.length === 0) {
-      const div = document.createElement("div");
-      div.classList.add("result-item");
-      div.textContent = "No results found";
-      resultsContainer.appendChild(div);
-    }
-
     resultsContainer.style.display = "flex";
   });
+
   document.addEventListener("click", (event) => {
     if (!searchBar.contains(event.target) && !resultsContainer.contains(event.target)) {
       resultsContainer.style.display = "none";
